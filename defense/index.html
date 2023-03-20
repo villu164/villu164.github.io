@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+  <title>Defense Mechanisms</title>
+  <meta name="description" content="Learn about different defense mechanisms to protect against cognitive hacks.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <p>
+    Select a language:
+    <span><a href="#" onclick="loadContent('en')">English</a></span>
+    <!-- <span><a href="#" onclick="loadContent('et')">Estonian</a></span> -->
+  </p>
+  <h1>Defense Mechanisms</h1>
+  <div id="content"></div>
+
+  <script>
+    function loadContent(lang) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'index_' + lang + '.html', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            document.getElementById('content').innerHTML = xhr.responseText;
+          } else {
+            alert('Failed to load content');
+          }
+        }
+      };
+      xhr.send(null);
+    }
+    loadContent(document.querySelector('html')['lang'])
+  </script>
+</body>
+</html>
